@@ -5,6 +5,7 @@ const RomanNumber = require('../lib/roman-converter')
 const util = require('util')
 
 chai.should()
+const expect = chai.expect
 
 /* global describe it */
 /* eslint no-new: off */
@@ -32,7 +33,7 @@ describe('RomanNumber', function () {
       }).should.throw('invalid value')
     })
   })
-  describe('parse', function () {
+  describe.only('parse', function () {
     const testValues = [
       [null, new Error('value required')],
       ['', new Error('value required')],
@@ -43,7 +44,7 @@ describe('RomanNumber', function () {
       ['V', 5],
       ['1473', new Error('invalid value')],
       ['CDXXIX', 429],
-      ['CD1X', 410],
+      ['CD1X', new Error('invalid value')],
       ['error', new Error('invalid value')],
       ['MCDLXXXII', 1482],
       ['MCMLXXX', 1980],
@@ -54,12 +55,18 @@ describe('RomanNumber', function () {
     testValues.forEach(([value, result]) => {
       if (result instanceof Error) {
         it(`should throw ${result.message} on ${util.inspect(value)}`, function () {
-          return RomanNumber.parse(value).message.should.equal(result.message)
+          expect(() => {
+            new RomanNumber(value)
+          }).to.throw(result.message)
         })
+
+        return
       }
 
       it(`should return ${util.inspect(result)} on ${util.inspect(value)}`, function () {
-        RomanNumber.parse(value).should.equal(result)
+        const romanNumber = new RomanNumber(value)
+
+        romanNumber.toInt().should.equal(result)
       })
     })
   })
