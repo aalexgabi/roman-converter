@@ -1,7 +1,7 @@
 'use strict'
 
 const chai = require('chai')
-const RomanNumber = require('../lib/roman-converter')
+const RomanNumber = require('..')
 const util = require('util')
 
 chai.should()
