@@ -22,6 +22,16 @@ describe('RomanNumber', function () {
         new RomanNumber()
       }).should.throw('value required')
     })
+    it('should throw invalid range on 0', function () {
+      (function () {
+        new RomanNumber(0)
+      }).should.throw('invalid range')
+    })
+    it('should throw invalid range on negative number', function () {
+      (function () {
+        new RomanNumber(-33)
+      }).should.throw('invalid range')
+    })
     it('should throw invalid range on too big number', function () {
       (function () {
         new RomanNumber(9999)
