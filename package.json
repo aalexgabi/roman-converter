@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/aalexgabi/roman-converter/issues"
   },
-  "homepage": "https://github.com/aalexgabi/roman-converter#readme"
+  "homepage": "https://github.com/aalexgabi/roman-converter#readme",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }
