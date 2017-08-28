@@ -49,7 +49,7 @@ describe('RomanNumber', function () {
       ['MCDLXXXII', 1482],
       ['MCMLXXX', 1980],
       ['MMMMCMXCIX', 4999],
-      ['MMMMDMXCIX', 4599]
+      ['MMMMDMXCIX', new Error('invalid value')]
     ]
 
     testValues.forEach(([value, result]) => {
