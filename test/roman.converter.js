@@ -38,6 +38,7 @@ describe('RomanNumber', function () {
     const testValues = [
       [null, new Error('value required')],
       ['', new Error('value required')],
+      [undefined, new Error('value required')],
       [0, new Error('invalid range')],
       [1, 1],
       [3, 3],
@@ -85,6 +86,7 @@ describe('RomanNumber', function () {
     const testValues = [
       [null, new Error('value required')],
       ['', new Error('value required')],
+      [undefined, new Error('value required')],
       [0, new Error('invalid range')],
       [1, 'I'],
       [3, 'III'],
