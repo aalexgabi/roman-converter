@@ -33,16 +33,26 @@ describe('RomanNumber', function () {
       }).should.throw('invalid value')
     })
   })
-  describe.only('parse', function () {
+
+  describe('parse', function () {
     const testValues = [
       [null, new Error('value required')],
       ['', new Error('value required')],
+      [0, 0],
+      [1, 1],
+      [3, 3],
+      [4, 4],
+      [5, 5],
       ['I', 1],
       ['III', 3],
-      ['IIII', 4],
+      ['IIII', 4], // FIXME: only 3 repeating digits allowed
       ['IV', 4],
       ['V', 5],
+      [1968, 1968],
       ['1473', new Error('invalid value')],
+      [2999, 2999],
+      [3000, 3000],
+      [10000, new Error('invalid range')],
       ['CDXXIX', 429],
       ['CD1X', new Error('invalid value')],
       ['error', new Error('invalid value')],
