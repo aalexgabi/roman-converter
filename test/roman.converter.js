@@ -45,7 +45,7 @@ describe('RomanNumber', function () {
       [5, 5],
       ['I', 1],
       ['III', 3],
-      ['IIII', 4], // FIXME: only 3 repeating digits allowed
+      ['IIII', new Error('invalid value')],
       ['IV', 4],
       ['V', 5],
       [1968, 1968],
@@ -77,6 +77,53 @@ describe('RomanNumber', function () {
         const romanNumber = new RomanNumber(value)
 
         romanNumber.toInt().should.equal(result)
+      })
+    })
+  })
+
+  describe('toString', function () {
+    const testValues = [
+      [null, new Error('value required')],
+      ['', new Error('value required')],
+      [0, new Error('invalid range')],
+      [1, 'I'],
+      [3, 'III'],
+      [4, 'IV'],
+      [5, 'V'],
+      ['I', 'I'],
+      ['III', 'III'],
+      ['IIII', new Error('invalid value')],
+      ['IV', 'IV'],
+      ['V', 'V'],
+      [1968, 'MCMLXVIII'],
+      ['1473', new Error('invalid value')],
+      [2999, 'MMCMXCIX'],
+      [3000, 'MMM'],
+      [10000, new Error('invalid range')],
+      ['CDXXIX', 'CDXXIX'],
+      ['CD1X', new Error('invalid value')],
+      ['error', new Error('invalid value')],
+      ['MCDLXXXII', 'MCDLXXXII'],
+      ['MCMLXXX', 'MCMLXXX'],
+      ['MMMMCMXCIX', 'MMMMCMXCIX'],
+      ['MMMMDMXCIX', new Error('invalid value')]
+    ]
+
+    testValues.forEach(([value, result]) => {
+      if (result instanceof Error) {
+        it(`should throw ${result.message} on ${util.inspect(value)}`, function () {
+          expect(() => {
+            new RomanNumber(value)
+          }).to.throw(result.message)
+        })
+
+        return
+      }
+
+      it(`should return ${util.inspect(result)} on ${util.inspect(value)}`, function () {
+        const romanNumber = new RomanNumber(value)
+
+        romanNumber.toString().should.equal(result)
       })
     })
   })
