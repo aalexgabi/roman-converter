@@ -32,6 +32,9 @@ describe('RomanNumber', function () {
         new RomanNumber(new Date())
       }).should.throw('invalid value')
     })
+    it('should return object when calling constructor without new keyword', function () {
+      RomanNumber(9).toInt().should.equal(9)
+    })
   })
 
   describe('parse', function () {
