@@ -2,6 +2,12 @@
   "name": "roman-converter",
   "version": "0.0.0",
   "main": "lib/roman-converter.js",
+  "bin": {
+    "d2r": "./bin/d2r",
+    "decimal-to-roman": "./bin/decimal-to-roman",
+    "r2d": "./bin/r2d",
+    "roman-to-decimal": "./bin/roman-to-decimal"
+  },
   "directories": {
     "lib": "lib",
     "test": "test"

@@ -1,0 +1,10 @@
+usage: d2r <number>
+       r2d <number>
+       deciam-to-roman <number>
+       roman-to-decimal <number>
+
+    When number is not provided argument it's read from stdin
+
+DESCRIPTION
+
+    Converts between roman and decimal numbers
