@@ -58,7 +58,7 @@ describe('RomanNumber', function () {
       ['error', new Error('invalid value')],
       ['MCDLXXXII', 1482],
       ['MCMLXXX', 1980],
-      ['MMMMCMXCIX', 4999],
+      ['MMMMCMXCIX', new Error('invalid range')],
       ['MMMMDMXCIX', new Error('invalid value')]
     ]
 
@@ -105,7 +105,8 @@ describe('RomanNumber', function () {
       ['error', new Error('invalid value')],
       ['MCDLXXXII', 'MCDLXXXII'],
       ['MCMLXXX', 'MCMLXXX'],
-      ['MMMMCMXCIX', 'MMMMCMXCIX'],
+      ['MMMMCMXCIX', new Error('invalid range')],
+      ['MMMMMMMMMCMXCIX', new Error('invalid range')],
       ['MMMMDMXCIX', new Error('invalid value')]
     ]
 
